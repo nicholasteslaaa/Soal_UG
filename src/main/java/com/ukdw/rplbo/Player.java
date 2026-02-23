@@ -4,10 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Player {
-    String name;
-    List<Cards> player_hand = new ArrayList<>();
-    Gamestate game;
-    boolean isSkipped = false;
+    private String name;
+    private List<Cards> player_hand = new ArrayList<>();
+    private Gamestate game;
+    private boolean isSkipped = false;
 
     public Player(String name, Gamestate game){
         this.name = name;

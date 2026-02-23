@@ -6,7 +6,7 @@ public class SkipCards extends ActionCards{
     public boolean play_card(Gamestate game) {
         if (game.getCurrent_card() == null){
             game.setCurrent_card(this);
-            game.get_player(game.getCurrent_player_idx()+1).isSkipped = true;
+            game.get_player(game.getCurrent_player_idx()+1).setSkipped(true);
             return true;
         }
         if(game.getCurrent_card().color != this.color){

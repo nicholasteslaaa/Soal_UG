@@ -50,6 +50,12 @@ public class Gamestate {
     }
 
     public void setCurrent_player_idx(int current_player_idx) {
+        if (current_player_idx > players.size()-1){
+            current_player_idx = (int) current_player_idx % (players.size()-1);
+        }
+        if (current_player_idx < 0){
+            current_player_idx = (int) (current_player_idx*-1) % (players.size()-1);
+        }
         this.current_player_idx = current_player_idx;
     }
 
