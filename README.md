@@ -55,5 +55,3 @@ play_card(GameState game){
 Type pada setiap children cards merupakan namafile dalam huruf besar, misal: class = NumberCards --type--> "NUMBERCARDS"
 <hr>
 
-<hr>
-
