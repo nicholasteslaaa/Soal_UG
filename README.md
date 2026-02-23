@@ -1,4 +1,5 @@
 # UNO
+<img src="img/UML.png">
 
 
 ## NumberCards
@@ -46,10 +47,10 @@ play_card(GameState game){
 play_card(GameState game){
     - Menambah 4 kartu pada player selanjutnya
     - Mengurangi 4 kartu terdepan pada tumpukan kartu
-    - Buat agar instansiasi class dapat memasukan parameter color maupun tidak
+    - Konstruktor kelas harus fleksibel (overloading), memungkinkan instansiasi dengan parameter warna yang ditentukan pemain atau tanpa warna (null) saat pertama dikeluarkan.
     - Ubah current card menjadi kartu ini
 }
 ```
+
 <hr>
 
-<img src="img/UML.png">
