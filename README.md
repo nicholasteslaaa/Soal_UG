@@ -8,8 +8,6 @@ play_card(GameState game){
     - Jika current card == null jadikan current card menjadi kartu ini   
 }
 ```
-Kartu dapat dimainkan jika kartu sekarang memiliki nomor yang sama ATAU warna yang sama
-
 <img src="img/NumberCards.png">
 
 ## ActionCards
