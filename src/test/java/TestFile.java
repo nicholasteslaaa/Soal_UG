@@ -1,11 +1,22 @@
 import com.ukdw.rplbo.*;
+import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class TestFile {
+    static int score = 0;
+
+    @AfterAll
+    static void showScore() {
+        System.out.println("=================================");
+        System.out.println("FINAL SCORE: " + score + " / 100");
+        System.out.println("=================================");
+    }
+
     @Test
     void DrawTwoCardsTest() {
         Gamestate uno = new Gamestate();
@@ -21,6 +32,7 @@ class TestFile {
         assertEquals(player.getPlayer_hand().get(player.getPlayer_hand().size()-1),secondCard, " ");
         assertEquals(player.getPlayer_hand().get(player.getPlayer_hand().size()-2),firstCard, " ");
 
+        score += 20;
     }
 
     @Test
@@ -43,23 +55,30 @@ class TestFile {
         NumberCards red1 = new NumberCards("RED",2);
         red1.play_card(uno);
         assertEquals(uno.getCurrent_card(), yellow, "Current Card: "+yellow.toString());
+
+        score += 20;
     }
 
     @Test
     void ReverseCardsTest() {
         Gamestate uno = new Gamestate();
-        Player firstPlayer = uno.get_player(0);
-        Player lastPlayer = uno.get_player(uno.getPlayers().size());
+
+        List<Player> originalOrder = new ArrayList<>(uno.getPlayers());
+
+        System.out.println(originalOrder);
         ReverseCards rc = new ReverseCards("RED");
         rc.play_card(uno);
 
-        Player firstPlayer1 = uno.get_player(0);
-        Player lastPlayer1= uno.get_player(uno.getPlayers().size());
+        List<Player> reversedOrder = uno.getPlayers();
+        System.out.println(reversedOrder);
+        for (int i = 0; i < originalOrder.size(); i++) {
+            assertEquals(
+                    originalOrder.get(i),
+                    reversedOrder.get(reversedOrder.size() - i - 1)
+            );
+        }
 
-        boolean result = firstPlayer == firstPlayer1;
-        boolean result1 = lastPlayer == lastPlayer1;
-
-        assertEquals(true, result1==result, "");
+        score += 20;
     }
 
     @Test
@@ -70,6 +89,8 @@ class TestFile {
         rc.play_card(uno);
 
         assertEquals(true, uno.get_player(1).isSkipped(), "");
+
+        score += 20;
     }
 
 
@@ -82,6 +103,7 @@ class TestFile {
 
         WildCards wc1 = new WildCards();
         assertEquals(null, wc1.color, "Expected: 9, Actual: "+uno.get_player(1).getPlayer_hand().size());
+        score += 20;
     }
 
 

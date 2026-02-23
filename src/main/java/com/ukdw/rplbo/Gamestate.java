@@ -61,8 +61,8 @@ public class Gamestate {
 
     public void change_player_position(int original_position, int target_position){
         Player temp = players.get(original_position);
-        players.set(original_position,players.get(target_position));
-        players.set(original_position,temp);
+        players.set(original_position, players.get(target_position));
+        players.set(target_position, temp);
     }
 
 
