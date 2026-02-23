@@ -51,8 +51,9 @@ play_card(GameState game){
     - Ubah current card menjadi kartu ini
 }
 ```
-- Type pada setiap children cards merupakan namafile dalam huruf besar, misal:
-  class = NumberCards --type--> "NUMBERCARDS"
+<hr>
+Type pada setiap children cards merupakan namafile dalam huruf besar, misal: class = NumberCards --type--> "NUMBERCARDS"
+<hr>
 
 <hr>
 
