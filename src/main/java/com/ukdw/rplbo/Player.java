@@ -7,21 +7,22 @@ public class Player {
     String name;
     List<Cards> player_hand = new ArrayList<>();
     Gamestate game;
+    boolean isSkipped = false;
 
     public Player(String name, Gamestate game){
         this.name = name;
         this.game = game;
 
-        drawCards(this.game.getCard_start_amount());
+        drawCards(5);
     }
 
     public void drawCards(){
-        player_hand.add(game.cardStack.get(0));
-        game.cardStack.remove(0);
+        player_hand.add(game.getCardStack().get(0));
+        game.getCardStack().remove(0);
     }
 
     public void drawCards(int amount){
-        for (int i = 0; i < amount+1; i++){
+        for (int i = 0; i < amount; i++){
             drawCards();
         }
     }
@@ -46,9 +47,22 @@ public class Player {
         }
         if (player_hand.get(card_idx-1).play_card(game)){
             player_hand.remove(card_idx-1);
+            game.setCurrent_player_idx(game.getCurrent_player_idx()+1);
         }else{
-            System.out.println("ERROR: color, type or number isn't the same ");
+            System.out.println("ERROR: color, type or number isn't the with current card");
         }
 
+    }
+
+    public boolean isSkipped() {
+        return isSkipped;
+    }
+
+    public void setSkipped(boolean skipped) {
+        isSkipped = skipped;
+    }
+
+    public List<Cards> getPlayer_hand(){
+        return  player_hand;
     }
 }

@@ -10,7 +10,7 @@ public class NumberCards extends Cards{
     }
 
     @Override
-    boolean play_card(Gamestate game) {
+    public boolean play_card(Gamestate game) {
         Cards currCard = game.getCurrent_card();
         if (currCard == null){
             game.setCurrent_card(this);

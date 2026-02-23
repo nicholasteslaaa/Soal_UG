@@ -5,24 +5,60 @@ import java.util.Random;
 
 public class Gamestate {
     private List<Player> players = new ArrayList<>();
-    List<Cards> cardStack = new ArrayList<>();
-    private int card_start_amount = 5;
-    private int current_player_idx = 0;
+    private List<Cards> cardStack = new ArrayList<>();
     private Cards current_card = null;
+    private int current_player_idx = 0;
 
-
-    public Gamestate(int card_start_amount,int player_amount){
-        this.card_start_amount = card_start_amount;
+    public Gamestate(int player_amount){
         set_up_cards();
         shuffle();
-        add_bot(player_amount);
+        add_player(player_amount);
     }
 
     public Gamestate(){
         set_up_cards();
         shuffle();
-        add_bot(2);
+        add_player(2);
     }
+
+    public List<Player> getPlayers() {
+        return players;
+    }
+
+    public void setPlayers(List<Player> players) {
+        this.players = players;
+    }
+
+    public List<Cards> getCardStack() {
+        return cardStack;
+    }
+
+    public void setCardStack(List<Cards> cardStack) {
+        this.cardStack = cardStack;
+    }
+
+    public Cards getCurrent_card() {
+        return current_card;
+    }
+
+    public void setCurrent_card(Cards current_card) {
+        this.current_card = current_card;
+    }
+
+    public int getCurrent_player_idx() {
+        return current_player_idx;
+    }
+
+    public void setCurrent_player_idx(int current_player_idx) {
+        this.current_player_idx = current_player_idx;
+    }
+
+    public void change_player_position(int original_position, int target_position){
+        Player temp = players.get(original_position);
+        players.set(original_position,players.get(target_position));
+        players.set(original_position,temp);
+    }
+
 
     public void set_up_cards(){
         String[] color = {"RED","YELLOW","BLUE","GREEN"};
@@ -40,7 +76,7 @@ public class Gamestate {
             }
 
             for (int i = 0; i < 5; i++){
-                cardStack.add(new WildCards());
+                cardStack.add(new WildCards("WILDCARDS"));
             }
         }
     }
@@ -56,7 +92,7 @@ public class Gamestate {
         }
     }
 
-    public void add_bot(int amount_players){
+    public void add_player(int amount_players){
         this.players.add(new Player("player",this));
         for (int i = 1; i < amount_players+1; i++){
             Player player = new Player("bot "+String.valueOf(i),this);
@@ -69,37 +105,4 @@ public class Gamestate {
         if (player_idx < 0){player_idx = (player_idx*-1) % players.size()-1;}
         return players.get(player_idx);
     }
-
-    public int get_player_amount(){
-        return players.size();
-    }
-
-    public void change_player_position(int original_position, int target_position){
-        Player temp = players.get(original_position);
-        players.set(original_position,players.get(target_position));
-        players.set(original_position,temp);
-    }
-
-    public int get_current_player_idx(){
-        return current_player_idx;
-    }
-
-
-
-    public Cards getCurrent_card() {
-        return current_card;
-    }
-
-    public void setCurrent_card(Cards current_card) {
-        this.current_card = current_card;
-    }
-
-    public int getCard_start_amount() {
-        return card_start_amount;
-    }
-
-    public void setCard_start_amount(int card_start_amount) {
-        this.card_start_amount = card_start_amount;
-    }
-
 }

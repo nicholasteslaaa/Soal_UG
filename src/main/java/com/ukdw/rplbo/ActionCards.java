@@ -8,7 +8,6 @@ public class ActionCards extends Cards {
 
     @Override
     boolean play_card(Gamestate game) {
-
         return false;
     }
 }
