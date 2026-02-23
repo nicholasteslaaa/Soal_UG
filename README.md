@@ -3,6 +3,7 @@
 
 ## NumberCards
 <img src="img/NumberCards.png">
+
 ```
 play_card(GameState game){
     - Jika current card memiliki nomor yang sama ATAU warna yang sama dengan kartu ini maka jadikan current card menjadi kartu ini
